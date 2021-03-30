@@ -1,0 +1,2 @@
+rootProject.name='Iniapp'
+include ':app'
