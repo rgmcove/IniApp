@@ -12,15 +12,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="clip_horizontal"
         android:gravity="center"
-        android:text="Listado Registros" />
+        android:text="Listado Registros"
+        android:textSize="20dp"/>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="600dp"
-        android:layout_marginTop="15dp"
-        android:scrollIndicators="bottom">
-
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_marginTop="15dp"/>
 
     <Button
         android:id="@+id/btnRegistrar"

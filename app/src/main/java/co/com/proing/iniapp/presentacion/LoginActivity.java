@@ -54,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                 notificarMensajes("Ingreso correctamente");
                 Intent intent = new Intent(this, ListarActivity.class);
                 startActivity(intent);
+                finish();
 
             } else{
                 notificarMensajes("Usuario o Contraseña incorrectos, ingreslos nuevamente");
