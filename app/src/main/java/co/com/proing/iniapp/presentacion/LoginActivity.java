@@ -59,6 +59,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        mContext = this;
+
         //Asignar valores a cada elemento
         btnIngresar = findViewById(R.id.btnIngresar);
         txtUsuario = findViewById(R.id.txtUsuario);
@@ -71,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //VALIDACION DE VERSION ANDROID
         if (Build.VERSION.SDK_INT >= 23) {
-            checkPermissions();
+            //checkPermissions();
         } else {
             bolPermisos = true;
         }
