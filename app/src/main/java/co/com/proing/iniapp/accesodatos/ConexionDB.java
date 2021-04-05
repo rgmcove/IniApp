@@ -19,7 +19,7 @@ public class ConexionDB {
         }catch (Exception er){
             System.err.println("Error Conexion"+ er.toString());
         }
-        return  conexion;
+        return conexion;
     }
 
     //Funcion para Cerrar la Conexion
