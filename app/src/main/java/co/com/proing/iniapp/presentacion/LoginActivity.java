@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.com.proing.iniapp.R;
+import co.com.proing.iniapp.utilidades.Utiles;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -48,6 +49,9 @@ public class LoginActivity extends AppCompatActivity {
 
     //Context
     Context mContext;
+
+    //Utilidades
+    Utiles utilidades;
 
     //Declarar Elementos de activity_login
     EditText txtUsuario;
@@ -73,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //VALIDACION DE VERSION ANDROID
         if (Build.VERSION.SDK_INT >= 23) {
-            //checkPermissions();
+            checkPermissions();
         } else {
             bolPermisos = true;
         }
@@ -95,24 +99,20 @@ public class LoginActivity extends AppCompatActivity {
         String pass = txtContraseña.getText().toString();
 
         if (TextUtils.isEmpty(user) || TextUtils.isEmpty(pass)){
-            notificarMensajes("El campo usuario o contraseña no pueden estar vacios, por favor ingreselos");
+            utilidades.notificar("El campo usuario o contraseña no pueden estar vacios, por favor ingreselos");
 
         } else{
 
             if (user.equals(cedula) && pass.equals(clave)){
-                notificarMensajes("Ingreso correctamente");
+                utilidades.notificar("Ingreso correctamente");
                 Intent intent = new Intent(this, ListarActivity.class);
                 startActivity(intent);
                 finish();
 
             } else{
-                notificarMensajes("Usuario o Contraseña incorrectos, ingreslos nuevamente");
+                utilidades.notificar("Usuario o Contraseña incorrectos, ingreslos nuevamente");
             }
         }
-    }
-
-    public void notificarMensajes(String mensaje){
-        Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
     }
 
     private void checkPermissions(){

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 import co.com.proing.iniapp.R;
+import co.com.proing.iniapp.utilidades.Utiles;
 
 public class ListarActivity extends AppCompatActivity {
 
@@ -18,6 +19,9 @@ public class ListarActivity extends AppCompatActivity {
     ArrayList listRegister;
 
     ArrayAdapter adapterRegister;
+
+    //Utilidades
+    Utiles utilidades;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +35,12 @@ public class ListarActivity extends AppCompatActivity {
         listViewRegister = (ListView) findViewById(R.id.itemListReg);
 
         if(listRegister.size() <= 0) {
-            notificarMensajes("No hay registros");
+            utilidades.notificar("No hay Registros");
         } else{
             System.out.println("Registros: "+ listRegister.size());
+            adapterRegister = new ArrayAdapter(this, R.layout.register_list, listRegister);
+            listViewRegister.setAdapter(adapterRegister);
         }
     }
 
-    public void notificarMensajes(String mensaje){
-        Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
-
-    }
 }
