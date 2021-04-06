@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.com.proing.iniapp.R;
+import co.com.proing.iniapp.accesodatos.ConexionDB;
 import co.com.proing.iniapp.utilidades.Utiles;
 
 public class LoginActivity extends AppCompatActivity {
@@ -58,12 +59,17 @@ public class LoginActivity extends AppCompatActivity {
     EditText txtContraseña;
     Button btnIngresar;
 
+    //BD
+    ConexionDB db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         mContext = this;
+        utilidades = new Utiles();
+        db = new ConexionDB();
 
         //Asignar valores a cada elemento
         btnIngresar = findViewById(R.id.btnIngresar);
@@ -83,7 +89,6 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         btnIngresar.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View view) {
                 ingresar(view);
@@ -99,20 +104,21 @@ public class LoginActivity extends AppCompatActivity {
         String pass = txtContraseña.getText().toString();
 
         if (TextUtils.isEmpty(user) || TextUtils.isEmpty(pass)){
-            utilidades.notificar("El campo usuario o contraseña no pueden estar vacios, por favor ingreselos");
+            utilidades.notificar("El campo usuario o contraseña no pueden estar vacios, por favor ingreselos", mContext);
 
         } else{
 
             if (user.equals(cedula) && pass.equals(clave)){
-                utilidades.notificar("Ingreso correctamente");
+                utilidades.notificar("Ingreso correctamente", mContext);
                 Intent intent = new Intent(this, ListarActivity.class);
                 startActivity(intent);
                 finish();
 
             } else{
-                utilidades.notificar("Usuario o Contraseña incorrectos, ingreslos nuevamente");
+                utilidades.notificar("Usuario o Contraseña incorrectos, ingreselos nuevamente", mContext);
             }
         }
+        db.conectarBD();
     }
 
     private void checkPermissions(){

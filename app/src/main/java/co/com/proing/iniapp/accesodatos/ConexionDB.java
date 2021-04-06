@@ -2,6 +2,8 @@ package co.com.proing.iniapp.accesodatos;
 
 import android.os.StrictMode;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -16,6 +18,7 @@ public class ConexionDB {
             StrictMode.setThreadPolicy(policy);
             Class.forName("org.postgresql.Driver");
             conexion = DriverManager.getConnection("jdbc:postgresql://172.16.0.21:5432/sisproing", "sisproing", "ProingSA2018");
+            System.out.println("resultado!!!: " + conexion);
         }catch (Exception er){
             System.err.println("Error Conexion"+ er.toString());
         }
