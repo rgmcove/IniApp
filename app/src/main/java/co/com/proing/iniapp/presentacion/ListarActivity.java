@@ -73,15 +73,14 @@ public class ListarActivity extends AppCompatActivity {
             });
         }
 
-        //MOSTRAR EN CONSOLA
+        /*/MOSTRAR EN CONSOLA
         if(res!=null){
             if(res.size()>0){
                 for(int i=0; i<res.size();i++){
                     System.out.println("################## ESTA VAINA TRAE: "+res.get(i));
                 }
             }
-        }
-
+        }*/
 
     }
 
