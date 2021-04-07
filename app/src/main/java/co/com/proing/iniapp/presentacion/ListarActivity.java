@@ -1,6 +1,7 @@
 package co.com.proing.iniapp.presentacion;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -55,6 +56,7 @@ public class ListarActivity extends AppCompatActivity {
         //Inicia Views
         listViewRegister = (ListView) findViewById(R.id.itemListReg);
 
+        //DATOS OBTENIDOS DE LA BD
         ArrayList<String> res = consultaDB.Total();
 
         if(res.size() <= 0) {
@@ -68,7 +70,8 @@ public class ListarActivity extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Toast.makeText(parent.getContext(), "Selecciona: "
-                    +parent.getItemAtPosition(position).toString(),Toast.LENGTH_SHORT);
+                    +parent.getItemAtPosition(position).toString(),Toast.LENGTH_SHORT).show();
+
                 }
             });
         }
@@ -82,6 +85,18 @@ public class ListarActivity extends AppCompatActivity {
             }
         }*/
 
+        btnRegistrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nuevoRegistro(view);
+            }
+        });
+    }
+
+    public void nuevoRegistro(View view){
+        Intent intent = new Intent(this, RegistrarActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }

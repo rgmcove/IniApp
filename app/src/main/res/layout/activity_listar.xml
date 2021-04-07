@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
         android:layout_gravity="center_horizontal"
-        android:text="Listado Registros"
+        android:text="@string/titulo_listar"
         android:textAlignment="center"
         android:textSize="30sp"
         android:layout_weight="2"/>
@@ -22,6 +22,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:layout_marginLeft="@dimen/margen_izquierda"
+        android:layout_marginRight="@dimen/margen_derecha"
         android:id="@+id/itemListReg"
         android:layout_weight="5" />
 
