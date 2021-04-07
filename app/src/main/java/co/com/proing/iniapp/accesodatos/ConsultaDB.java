@@ -50,17 +50,17 @@ public class ConsultaDB {
                     do {
 
                         id = resultSet.getString(1);
-                        res.add(id);
+//                        res.add(id);
                         descripcion = resultSet.getString(2);
-                        res.add(descripcion);
+//                        res.add(descripcion);
                         estado = resultSet.getString(3);
-                        res.add(estado);
+//                        res.add(estado);
                         fecha = resultSet.getString(4);
-                        res.add(fecha);
+//                        res.add(fecha);
                         hora = resultSet.getString(5);
-                        res.add(hora);
+//                        res.add(hora);
                         usuario = resultSet.getString(6);
-                        res.add(usuario);
+                        res.add(id+ " - "+descripcion+" - "+estado+" - "+fecha+" - "+hora+" - "+usuario);
                     }
                     while (resultSet.next());
                 }

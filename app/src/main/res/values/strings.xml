@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">IniApp</string>
+    <string name="bienvenida">¡Bienvenido a IniApp!</string>
 </resources>
