@@ -3,4 +3,5 @@
     <string name="bienvenida">¡Bienvenido a IniApp!</string>
     <string name="titulo_listar">Listado Registros</string>
     <string name="titulo_registro">Nuevo Registro</string>
+    <string name="titulo_detalle">Detalle</string>
 </resources>

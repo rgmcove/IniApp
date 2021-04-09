@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="combo_estados">
+        <item>SELECCIONE </item>
+        <item>ACTIVO</item>
+        <item>INACTIVO</item>
+        <item>RETIRADO</item>
+        <item>N/A</item>
+    </string-array>
+</resources>

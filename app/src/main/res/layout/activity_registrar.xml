@@ -7,6 +7,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/titulo_registrar"
         android:text="@string/titulo_registro"
         android:textAlignment="center"
         android:textColor="@color/colorBlack"
@@ -19,17 +20,18 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/lblDescripcion"
         android:layout_marginTop="40dp"
-        android:text="Descripción"
+        android:text="Descripción: "
         android:textColor="@color/colorBlack"
         android:layout_marginLeft="@dimen/margen_izquierda"
         android:layout_marginRight="@dimen/margen_derecha"
-        />
+        android:textSize="20dp"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtDescripcion"
+        android:id="@+id/idtxtDescripcion"
         android:layout_marginLeft="@dimen/margen_izquierda"
         android:layout_marginRight="@dimen/margen_derecha"
         />
@@ -37,32 +39,102 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Estado"
+        android:id="@+id/lblEstado"
+        android:text="Estado: "
         android:textColor="@color/colorBlack"
         android:layout_marginLeft="@dimen/margen_izquierda"
         android:layout_marginRight="@dimen/margen_derecha"
-        />
+        android:layout_marginTop="8dp"
+        android:textSize="20dp"/>
 
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/spnEstado"
+        android:id="@+id/idSpnEstado"
         android:layout_marginLeft="@dimen/margen_izquierda"
         android:layout_marginRight="@dimen/margen_derecha"
+        android:layout_marginTop="8dp"
         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="@dimen/margen_izquierda"
+        android:layout_marginRight="@dimen/margen_derecha"
+        >
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/idbtnFecha"
+            android:text="Fecha"
+            android:textColor="@color/colorWhite"
+            android:background="@color/colorPrimary"
+            />
+
+        <EditText
+            android:id="@+id/idtxtFecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="@dimen/margen_izquierda"
+        android:layout_marginRight="@dimen/margen_derecha"
+        >
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/idbtHora"
+            android:text="Hora"
+            android:textColor="@color/colorWhite"
+            android:background="@color/colorPrimary"
+            />
+
+        <EditText
+            android:id="@+id/idtxtHora"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" />
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Fecha"
+        android:id="@+id/lblUsuario"
+        android:text="Usuario: "
         android:textColor="@color/colorBlack"
         android:layout_marginLeft="@dimen/margen_izquierda"
         android:layout_marginRight="@dimen/margen_derecha"
-        />
+        android:layout_marginTop="15dp"
+        android:textSize="20dp"/>
 
-    <CalendarView
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:id="@+id/idtxtUsuario"
+        android:textColor="@color/colorBlack"
+        android:layout_marginLeft="@dimen/margen_izquierda"
+        android:layout_marginRight="@dimen/margen_derecha"/>
+
+
+    <Button
+        android:id="@+id/idbtnRegistrar"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/style_boton_ingresar"
+        android:text="Registrar"
+        android:onClick="registrarNuevo"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp" />
 
 </LinearLayout>

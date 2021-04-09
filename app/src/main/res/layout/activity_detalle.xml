@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentacion.DetalleActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/idtxtTitDetalle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorBlack"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/titulo_detalle"
+        android:textAlignment="center"
+        android:textSize="30sp" />
+
+    <ListView
+        android:id="@+id/itemListDet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margen_izquierda"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="@dimen/margen_derecha"
+        android:textAlignment="center" />
+
+</LinearLayout>
