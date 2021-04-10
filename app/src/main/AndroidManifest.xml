@@ -28,8 +28,8 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentacion.ListarActivity" />
-        <activity android:name=".presentacion.RegistrarActivity" />
+        <activity android:name=".presentacion.ListarActivity"></activity>
+        <activity android:name=".presentacion.RegistrarActivity"></activity>
     </application>
 
 </manifest>

@@ -47,6 +47,9 @@ public class RegistrarActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar);
 
+        //ACTIVAR EL BOTON ATRAS
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         //Asignar valores a los elementos
         descripcion = findViewById(R.id.idtxtDescripcion);
         comboEstado = findViewById(R.id.idSpnEstado);
@@ -184,5 +187,11 @@ public class RegistrarActivity extends AppCompatActivity implements View.OnClick
 
         //ALERTA
         alerta.show();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return false;
     }
 }

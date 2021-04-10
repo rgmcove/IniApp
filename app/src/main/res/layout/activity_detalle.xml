@@ -23,7 +23,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margen_izquierda"
         android:layout_marginTop="15dp"
-        android:layout_marginRight="@dimen/margen_derecha"
-        android:textAlignment="center" />
+        android:layout_marginRight="@dimen/margen_derecha" />
 
 </LinearLayout>

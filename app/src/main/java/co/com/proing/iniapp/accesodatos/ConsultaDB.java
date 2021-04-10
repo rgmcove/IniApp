@@ -16,7 +16,7 @@ public class ConsultaDB {
 
     ConexionDB db;
 
-    public ArrayList<String> Total() {
+    public ArrayList<String> Total(char idItem) {
 
         db = new ConexionDB();
 
@@ -25,7 +25,8 @@ public class ConsultaDB {
         String estado = "";
         String fecha = "";
         String hora = "";
-        String usuario = "";
+        String usuario_crea = "";
+        String usuario_modifica = "";
 
         ArrayList<String> res = new ArrayList<String>();
 
@@ -37,7 +38,18 @@ public class ConsultaDB {
                 Statement st = conexion.createStatement();
                 String sql;
 
-                sql = "select id, descripcion, estado, fecha, hora, usuario_crea from ejercicio_android";
+                sql = "select \n" +
+                        "x.id, \n" +
+                        "upper(x.descripcion), \n" +
+                        "x.estado, \n" +
+                        "x.fecha, \n" +
+                        "to_char(x.hora, 'HH24:MI'), \n" +
+                        "y.rhdocumento||' '||y.rhnombre||' '||y.rhapell1||' '||y.rhapell2, \n" +
+                        "case when x.usuario_modifica is null then 'N/A' else  z.rhdocumento||' '||z.rhnombre||' '||z.rhapell1||' '||z.rhapell2 end \n" +
+                        "from ejercicio_android x\n" +
+                        "left join rh_hojadevida y on y.rhdocumento = x.usuario_crea\n" +
+                        "left join rh_hojadevida z on z.rhdocumento = x.usuario_modifica\n" +
+                        "where x.id ='"+idItem+"'";
 
                 ResultSet resultSet = st.executeQuery(sql);
 
@@ -51,21 +63,24 @@ public class ConsultaDB {
                     do {
 
                         id = resultSet.getString(1);
-//                        res.add(id);
+                        res.add("ID: "+id);
                         descripcion = resultSet.getString(2);
-//                        res.add(descripcion);
+                        res.add("DESCRIPCIÓN: "+descripcion);
                         estado = resultSet.getString(3);
-//                        res.add(estado);
+                        res.add("ESTADO: "+estado);
                         fecha = resultSet.getString(4);
-//                        res.add(fecha);
+                        res.add("FECHA: "+fecha);
                         hora = resultSet.getString(5);
-//                        res.add(hora);
-                        usuario = resultSet.getString(6);
-                        res.add(id + " - " + descripcion + " - " + estado + " - " + fecha + " - " + hora + " - " + usuario);
+                        res.add("HORA: "+hora);
+                        usuario_crea = resultSet.getString(6);
+                        res.add("USUARIO CREO: "+usuario_crea);
+                        usuario_modifica = resultSet.getString(7);
+                        res.add("USUARIO MODIFICA: "+usuario_modifica);
+//                        res.add(id + " - " + descripcion + " - " + estado + " - " + fecha + " - " + hora + " - " + usuario);
+                        System.out.println("######################################################## RESULTADOS: "+res);
                     }
                     while (resultSet.next());
                 }
-
                 resultSet.close();
                 st.close();
                 conexion.close();

@@ -31,20 +31,29 @@ public class DetalleActivity extends AppCompatActivity {
     //Declarar elementos del activity_listar
     TextView labelTitulo;
     private ListView listViewDetalle;
+    char idRegistro;
 
     //Utilidades
     Utiles utilidades;
 
     Context mContext;
 
+    Bundle bundle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle);
 
+        //ACTIVAR EL BOTON ATRAS
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         mContext = this;
         utilidades = new Utiles();
         consultaDB = new ConsultaDB();
+        bundle = getIntent().getExtras();
+
+        idRegistro = bundle.getChar("id");
 
         //Inicia lista
         listDetalle = new ArrayList<>();
@@ -53,7 +62,7 @@ public class DetalleActivity extends AppCompatActivity {
         listViewDetalle = (ListView) findViewById(R.id.itemListDet);
 
         //DATOS OBTENIDOS DE LA BD
-        ArrayList<String> res = consultaDB.Total();
+        ArrayList<String> res = consultaDB.Total(idRegistro);
 
         if (res.size() <= 0) {
             utilidades.notificar("No hay Registros", mContext);
@@ -128,5 +137,11 @@ public class DetalleActivity extends AppCompatActivity {
 
         //ALERTA
         alerta.show();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return false;
     }
 }
