@@ -1,8 +1,10 @@
 package co.com.proing.iniapp.presentacion;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,15 +29,15 @@ public class DetalleActivity extends AppCompatActivity {
 
     ArrayAdapter adapterDetalle;
 
-    ConsultaDB consultaDB;
+    ConsultaDB db;
 
     //Declarar elementos del activity_listar
-    TextView labelTitulo;
     private ListView listViewDetalle;
-    char idRegistro;
+    String idRegistro;
+//    Button eliminar, actualizar;
 
     //Utilidades
-    Utiles utilidades;
+    Utiles utiles;
 
     Context mContext;
 
@@ -47,13 +50,18 @@ public class DetalleActivity extends AppCompatActivity {
 
         //ACTIVAR EL BOTON ATRAS
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayShowTitleEnabled(false);
+//            actionBar.setDisplayShowHomeEnabled(true);
+        }
 
         mContext = this;
-        utilidades = new Utiles();
-        consultaDB = new ConsultaDB();
+        utiles = new Utiles();
+        db = new ConsultaDB();
         bundle = getIntent().getExtras();
 
-        idRegistro = bundle.getChar("id");
+        idRegistro = bundle.getString("id");
 
         //Inicia lista
         listDetalle = new ArrayList<>();
@@ -61,11 +69,15 @@ public class DetalleActivity extends AppCompatActivity {
         //Inicia Views
         listViewDetalle = (ListView) findViewById(R.id.itemListDet);
 
-        //DATOS OBTENIDOS DE LA BD
-        ArrayList<String> res = consultaDB.Total(idRegistro);
+        //Inicia Botones
+        final Button eliminar = findViewById(R.id.idbtnEliminar);
+        final Button actualizar = findViewById(R.id.idbtnActualizar);
 
+        //DATOS OBTENIDOS DE LA BD
+        ArrayList<String> res = db.Total(idRegistro);
+        System.out.println("ARRAY POSICION######################################################: "+res.get(0));
         if (res.size() <= 0) {
-            utilidades.notificar("No hay Registros", mContext);
+            utiles.notificar("No hay Registros", mContext);
         } else {
             System.out.println("Registros: " + res.size());
             adapterDetalle = new ArrayAdapter(this, R.layout.register_list, res);
@@ -113,24 +125,44 @@ public class DetalleActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        android.app.AlertDialog.Builder alerta = new android.app.AlertDialog.Builder(mContext);
 
-        alerta.setTitle("REGRESAR A LISTADO ANTERIOR");
-        alerta.setMessage("¿Desea regresar al listado anterior?");
+        Intent intent = new Intent(mContext, ListarActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return false;
+    }
+
+    public void eliminar(View view) {
+        AlertDialog.Builder alerta = new AlertDialog.Builder(this);
+
+        alerta.setTitle("ELIMINAR REGISTRO");
+        alerta.setMessage("¿Desea eliminar el registro?");
         alerta.setIcon(android.R.drawable.ic_dialog_alert);
 
         alerta.setPositiveButton("Si", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intent = new Intent(mContext, ListarActivity.class);
-                startActivity(intent);
-                finish();
+            public void onClick(DialogInterface dialog, int which) {
+                System.out.println("##################GUARDANDO NUEVO REGISTRO#######################################");
+
+                if (db.eliminarDatos(idRegistro)) {
+                    utiles.notificar("ELIMINO CON EXITO", mContext);
+                    Intent intent = new Intent(mContext, ListarActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    utiles.notificar("ERROR AL ELIMINAR", mContext);
+                }
             }
         });
 
         alerta.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
+            public void onClick(DialogInterface dialogInterface, int which) {
                 dialogInterface.cancel();
             }
         });
@@ -139,9 +171,32 @@ public class DetalleActivity extends AppCompatActivity {
         alerta.show();
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return false;
+    public void actualizar(View view) {
+        AlertDialog.Builder alerta = new AlertDialog.Builder(this);
+
+        alerta.setTitle("ACTUALIZAR REGISTRO");
+        alerta.setMessage("¿Desea actualizar el registro?");
+        alerta.setIcon(android.R.drawable.ic_dialog_alert);
+
+        alerta.setPositiveButton("SI", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                System.out.println("##################IENDO A PANTALLA ACTUALIZAR#######################################");
+
+                Intent intent = new Intent(mContext, ListarActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        alerta.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+                dialogInterface.cancel();
+            }
+        });
+
+        //ALERTA
+        alerta.show();
     }
 }

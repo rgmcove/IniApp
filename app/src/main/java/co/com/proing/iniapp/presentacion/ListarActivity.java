@@ -83,11 +83,21 @@ public class ListarActivity extends AppCompatActivity {
                 public boolean onItemLongClick(AdapterView<?> parent, final View view, int position, long id) {
 
                     final int idItem = (int) position;
+                    final String idRegistro;
                     System.out.println("##########################################################################################################################DATO ESCOGIDO: "+idItem);
                     String item = parent.getItemAtPosition(position).toString();
                     System.out.println("##########################################################################################################################ITEM ESCOGIDO: "+item);
-                    final char idtable = item.charAt(0);
-                    System.out.println("##########################################################################################################################ITEM FINAL: "+idtable);
+                    final char idcadena = item.charAt(1);
+                    System.out.println("##########################################################################################################################ITEM CADENA: "+idcadena);
+                    if (Character.isWhitespace(idcadena)){
+                        String idtable = item.substring(0,1);
+                        idRegistro = idtable;
+                        System.out.println("##########################################################################################################################ITEM FINAL: "+idtable);
+                    } else {
+                        String idtable = item.substring(0,2);
+                        idRegistro = idtable;
+                        System.out.println("##########################################################################################################################ITEM FINAL: "+idtable);
+                    }
 
                     AlertDialog.Builder alerta = new AlertDialog.Builder(mContext);
 
@@ -98,7 +108,7 @@ public class ListarActivity extends AppCompatActivity {
                     alerta.setPositiveButton("Si", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            irDetalle(view, idtable);
+                            irDetalle(view, idRegistro);
                         }
                     });
 
@@ -140,7 +150,7 @@ public class ListarActivity extends AppCompatActivity {
         finish();
     }
 
-    public void irDetalle(View view, char idTable){
+    public void irDetalle(View view, String idTable){
         Intent intent = new Intent(this, DetalleActivity.class);
         intent.putExtra("id", idTable);
         System.out.println("##################······················· ESTA VAINA TRAE: "+idTable);
