@@ -48,7 +48,7 @@ public class RegistrarActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar);
 
-        //ACTIVAR EL BOTON ATRAS
+        //ACTIVAR EL BOTON ATRAS Y QUITAR TITULO
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {

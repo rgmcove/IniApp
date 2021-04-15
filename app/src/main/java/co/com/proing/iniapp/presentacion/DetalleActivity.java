@@ -48,7 +48,7 @@ public class DetalleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle);
 
-        //ACTIVAR EL BOTON ATRAS
+        //ACTIVAR EL BOTON ATRAS Y QUITAR TITULO
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {

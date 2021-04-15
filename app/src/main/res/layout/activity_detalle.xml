@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".presentacion.DetalleActivity"
     android:orientation="vertical"
-    android:layout_weight="10">
+    android:weightSum="5">
 
     <TextView
         android:id="@+id/idtxtTitDetalle"
@@ -17,7 +17,7 @@
         android:text="@string/titulo_detalle"
         android:textAlignment="center"
         android:textSize="30sp"
-        android:layout_weight="1"/>
+        />
 
     <ListView
         android:id="@+id/itemListDet"
@@ -33,27 +33,32 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="30dp"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="20dp"
+        android:weightSum="2">
 
         <Button
             android:id="@+id/idbtnActualizar"
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/style_boton_ingresar"
             android:onClick="actualizar"
             android:text="Actualizar"
             android:textColor="@android:color/background_light"
-            android:textSize="18sp" />
+            android:textSize="18dp"
+            android:layout_margin="15dp"
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/idbtnEliminar"
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/style_boton_ingresar"
             android:onClick="eliminar"
             android:text="Eliminar"
             android:textColor="@android:color/background_light"
-            android:textSize="18sp" />
+            android:textSize="18dp"
+            android:layout_weight="1"
+            android:layout_margin="15dp" />
 
     </LinearLayout>
 
