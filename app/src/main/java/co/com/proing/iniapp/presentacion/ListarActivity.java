@@ -78,9 +78,9 @@ public class ListarActivity extends AppCompatActivity {
                 }
             });*/
 
-            listViewRegister.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            listViewRegister.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public boolean onItemLongClick(AdapterView<?> parent, final View view, int position, long id) {
+                public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
 
                     final int idItem = (int) position;
                     final String idRegistro;
@@ -122,7 +122,7 @@ public class ListarActivity extends AppCompatActivity {
                     //ALERTA
                     alerta.show();
 
-                    return false;
+//                    return false;
                 }
             });
         }
