@@ -16,6 +16,7 @@ public class ConsultaDB {
 
     ConexionDB db;
 
+    //CONSULTA PARA EL DETALLE Y ACTUALIZAR
     public ArrayList<String> Total(String idItem, String accion) {
 
         db = new ConexionDB();
@@ -61,7 +62,8 @@ public class ConsultaDB {
                 } else {
 
                     do {
-                        if (accion == "detalle" ){
+                        //DATOS PARA MOSTRAR EL DETALLE
+                        if (accion == "detalle") {
 
                             System.out.println("##############################MOSTRANDO DATOS DETALLE");
 
@@ -82,6 +84,7 @@ public class ConsultaDB {
 //                        res.add(id + " - " + descripcion + " - " + estado + " - " + fecha + " - " + hora + " - " + usuario);
                             System.out.println("######################################################## RESULTADOS: " + res);
 
+                            //DATOS PARA SETEAR CAMPOS ACTIVITY ACTUALZAR
                         } else {
 
                             System.out.println("##############################MOSTRANDO DATOS ACTUALIZAR");
@@ -127,6 +130,7 @@ public class ConsultaDB {
         return res;
     }
 
+    //INSERT
     public boolean registrarDatos(ContentValues conValues) {
         System.out.println("####################### INGRESO A REGISTRO DE DATOS ########################");
 
@@ -163,6 +167,7 @@ public class ConsultaDB {
         return guardado;
     }
 
+    //CONSULTA PARA ACTIVIDAD LISTAR
     public ArrayList<String> ConsultaParcial() {
 
         db = new ConexionDB();
@@ -230,9 +235,10 @@ public class ConsultaDB {
         return res;
     }
 
+    //DELETE
     public boolean eliminarDatos(String idRegistro) {
 
-        System.out.println("####################### INGRESO A REGISTRO DE DATOS ########################");
+        System.out.println("####################### INGRESO A ELIMINACION DE DATOS ########################");
 
         boolean guardado = false;
         int res = 0;
@@ -266,8 +272,9 @@ public class ConsultaDB {
         return guardado;
     }
 
+    //UPDATE
     public boolean actualizarDatos(ContentValues conValues) {
-        System.out.println("####################### INGRESO A REGISTRO DE DATOS ########################");
+        System.out.println("####################### INGRESO A ACTUALIZACION DE DATOS ########################");
 
         boolean guardado = false;
         int res = 0;

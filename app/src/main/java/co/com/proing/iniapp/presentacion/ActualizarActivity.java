@@ -51,13 +51,11 @@ public class ActualizarActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayShowTitleEnabled(false);
-//            actionBar.setDisplayShowHomeEnabled(true);
         }
 
         //Asignar valores a los elementos
         descripcion = findViewById(R.id.idtxtDescripcionA);
         comboEstado = findViewById(R.id.idSpnEstadoA);
-//        usuario = findViewById(R.id.idtxtUsuarioA);
         btnActualizar = findViewById(R.id.idbtnActualizar);
 
         db = new ConsultaDB();
