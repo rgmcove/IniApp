@@ -105,14 +105,14 @@ public class ListarActivity extends AppCompatActivity {
                     alerta.setMessage("¿Desea ver el detalle del registro?");
                     alerta.setIcon(android.R.drawable.ic_dialog_alert);
 
-                    alerta.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                    alerta.setPositiveButton("SI", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             irDetalle(view, idRegistro);
                         }
                     });
 
-                    alerta.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    alerta.setNegativeButton("NO", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.cancel();

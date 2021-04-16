@@ -16,7 +16,7 @@ public class ConsultaDB {
 
     ConexionDB db;
 
-    public ArrayList<String> Total(String idItem) {
+    public ArrayList<String> Total(String idItem, String accion) {
 
         db = new ConexionDB();
 
@@ -61,23 +61,47 @@ public class ConsultaDB {
                 } else {
 
                     do {
+                        if (accion == "detalle" ){
 
-                        id = resultSet.getString(1);
-                        res.add("ID: " + id);
-                        descripcion = resultSet.getString(2);
-                        res.add("DESCRIPCIÓN: " + descripcion);
-                        estado = resultSet.getString(3);
-                        res.add("ESTADO: " + estado);
-                        fecha = resultSet.getString(4);
-                        res.add("FECHA: " + fecha);
-                        hora = resultSet.getString(5);
-                        res.add("HORA: " + hora);
-                        usuario_crea = resultSet.getString(6);
-                        res.add("USUARIO CREO: " + usuario_crea);
-                        usuario_modifica = resultSet.getString(7);
-                        res.add("USUARIO MODIFICA: " + usuario_modifica);
+                            System.out.println("##############################MOSTRANDO DATOS DETALLE");
+
+                            id = resultSet.getString(1);
+                            res.add("ID: " + id);
+                            descripcion = resultSet.getString(2);
+                            res.add("DESCRIPCIÓN: " + descripcion);
+                            estado = resultSet.getString(3);
+                            res.add("ESTADO: " + estado);
+                            fecha = resultSet.getString(4);
+                            res.add("FECHA: " + fecha);
+                            hora = resultSet.getString(5);
+                            res.add("HORA: " + hora);
+                            usuario_crea = resultSet.getString(6);
+                            res.add("USUARIO CREO: " + usuario_crea);
+                            usuario_modifica = resultSet.getString(7);
+                            res.add("USUARIO MODIFICA: " + usuario_modifica);
 //                        res.add(id + " - " + descripcion + " - " + estado + " - " + fecha + " - " + hora + " - " + usuario);
-                        System.out.println("######################################################## RESULTADOS: " + res);
+                            System.out.println("######################################################## RESULTADOS: " + res);
+
+                        } else {
+
+                            System.out.println("##############################MOSTRANDO DATOS ACTUALIZAR");
+
+                            id = resultSet.getString(1);
+                            res.add(id);
+                            descripcion = resultSet.getString(2);
+                            res.add(descripcion);
+                            estado = resultSet.getString(3);
+                            res.add(estado);
+                            fecha = resultSet.getString(4);
+                            res.add(fecha);
+                            hora = resultSet.getString(5);
+                            res.add(hora);
+                            usuario_crea = resultSet.getString(6);
+                            res.add(usuario_crea);
+//                        res.add(id + " - " + descripcion + " - " + estado + " - " + fecha + " - " + hora + " - " + usuario);
+                            System.out.println("######################################################## RESULTADOS: " + res);
+                        }
+
                     }
                     while (resultSet.next());
                 }
@@ -221,6 +245,45 @@ public class ConsultaDB {
             String sql;
             sql = "delete from ejercicio_android \n" +
                     "where id ='"+idRegistro+"'";
+
+            res = st.executeUpdate(sql);
+
+            st.close();
+            conexion.close();
+
+            guardado = true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            conexion.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return guardado;
+    }
+
+    public boolean actualizarDatos(ContentValues conValues) {
+        System.out.println("####################### INGRESO A REGISTRO DE DATOS ########################");
+
+        boolean guardado = false;
+        int res = 0;
+        db = new ConexionDB();
+        conexion = db.conectarBD();
+
+        try {
+            Statement st = conexion.createStatement();
+
+            String sql;
+            sql = "update ejercicio_android set\n" +
+                    "descripcion = '"+conValues.getAsString("descripcion")+"', \n" +
+                    "estado = '"+conValues.getAsString("estado")+"', \n" +
+                    "usuario_modifica = '"+conValues.getAsString("usuario")+"'\n" +
+                    "where\n" +
+                    "id = '"+conValues.getAsString("id")+"'";
 
             res = st.executeUpdate(sql);
 

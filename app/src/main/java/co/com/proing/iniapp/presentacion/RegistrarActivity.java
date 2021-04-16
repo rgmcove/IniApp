@@ -6,6 +6,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -34,14 +35,18 @@ import co.com.proing.iniapp.utilidades.Utiles;
 public class RegistrarActivity extends AppCompatActivity implements View.OnClickListener {
 
     //Declarar elementos del activity_registrar
-    EditText descripcion, efecha, ehora, usuario;
+    EditText descripcion, efecha, ehora;
     Spinner comboEstado;
+    String usuario;
     Button bfecha, bhora, btnRegistrar;
     private int dia, mes, anio, hora, minutos;
 
     ConsultaDB db;
     Utiles utiles;
     Context mContext;
+
+    //PREFERENCES
+    SharedPreferences preferences;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,12 +68,16 @@ public class RegistrarActivity extends AppCompatActivity implements View.OnClick
         bhora = findViewById(R.id.idbtHora);
         efecha = findViewById(R.id.idtxtFecha);
         ehora = findViewById(R.id.idtxtHora);
-        usuario = findViewById(R.id.idtxtUsuario);
+//        usuario = findViewById(R.id.idtxtUsuario);
         btnRegistrar = findViewById(R.id.idbtnRegistrar);
 
         db = new ConsultaDB();
         mContext = this;
         utiles = new Utiles();
+
+        //PREFERENCES
+        preferences = mContext.getSharedPreferences("rag",0);
+        usuario = preferences.getString("usuario","");
 
         bfecha.setOnClickListener(this);
         bhora.setOnClickListener(this);
@@ -89,8 +98,6 @@ public class RegistrarActivity extends AppCompatActivity implements View.OnClick
                 }
             });
         }
-
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -126,45 +133,31 @@ public class RegistrarActivity extends AppCompatActivity implements View.OnClick
     }
 
     public void registrarNuevo(View view) {
-        AlertDialog.Builder alerta = new AlertDialog.Builder(this);
 
-        alerta.setTitle("GUARDAR REGISTRO");
-        alerta.setMessage("¿Desea guardar el registro?");
-        alerta.setIcon(android.R.drawable.ic_dialog_alert);
+        System.out.println("##################GUARDANDO NUEVO REGISTRO#######################################");
 
-        alerta.setPositiveButton("Si", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                System.out.println("##################GUARDANDO NUEVO REGISTRO#######################################");
+        if (!descripcion.getText().toString().equals("") && !efecha.getText().toString().equals("") && !ehora.getText().toString().equals("")){
+            ContentValues conValues = new ContentValues();
 
-                ContentValues conValues = new ContentValues();
+            conValues.put("descripcion", descripcion.getText().toString());
+            conValues.put("estado", comboEstado.getSelectedItem().toString());
+            conValues.put("fecha", efecha.getText().toString());
+            conValues.put("hora", ehora.getText().toString());
+            conValues.put("usuario", usuario);
 
-                conValues.put("descripcion", descripcion.getText().toString());
-                conValues.put("estado", comboEstado.getSelectedItem().toString());
-                conValues.put("fecha", efecha.getText().toString());
-                conValues.put("hora", ehora.getText().toString());
-                conValues.put("usuario", usuario.getText().toString());
-
-                if (db.registrarDatos(conValues)) {
-                    utiles.notificar("GUARDO CON EXITO", mContext);
-                    Intent intent = new Intent(mContext, ListarActivity.class);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    utiles.notificar("ERROR AL GUARDAR", mContext);
-                }
+            if (db.registrarDatos(conValues)) {
+                utiles.notificar("GUARDO CON EXITO", mContext);
+                Intent intent = new Intent(mContext, ListarActivity.class);
+                startActivity(intent);
+                finish();
+            } else {
+                utiles.notificar("ERROR AL GUARDAR", mContext);
             }
-        });
 
-        alerta.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int which) {
-                dialogInterface.cancel();
-            }
-        });
+        } else {
+            utiles.notificar("NO PUEDE GUARDAR UN REGISTRO SIN DATOS", mContext);
+        }
 
-        //ALERTA
-        alerta.show();
     }
 
     @Override

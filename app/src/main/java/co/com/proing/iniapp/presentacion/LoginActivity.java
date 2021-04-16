@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -63,6 +64,10 @@ public class LoginActivity extends AppCompatActivity {
     //BD
     ConexionDB db;
 
+    //PREFERENCES
+    SharedPreferences global = null;
+    SharedPreferences.Editor editor = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +82,10 @@ public class LoginActivity extends AppCompatActivity {
         btnIngresar = findViewById(R.id.btnIngresar);
         txtUsuario = findViewById(R.id.txtUsuario);
         txtContraseña = findViewById(R.id.txtPassword);
+
+        //PREFERENCES Y EDITOR
+        global = getSharedPreferences("rag", MODE_PRIVATE);
+        editor = global.edit();
 
         if (Build.VERSION.SDK_INT >= 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -113,6 +122,8 @@ public class LoginActivity extends AppCompatActivity {
             if (user.equals(cedula) && pass.equals(clave)){
                 utilidades.notificar("Ingreso correctamente", mContext);
                 Intent intent = new Intent(this, ListarActivity.class);
+                editor.putString("usuario", cedula);
+                editor.commit();
                 startActivity(intent);
                 finish();
 

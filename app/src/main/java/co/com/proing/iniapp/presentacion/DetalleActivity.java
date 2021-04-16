@@ -34,7 +34,7 @@ public class DetalleActivity extends AppCompatActivity {
     //Declarar elementos del activity_listar
     private ListView listViewDetalle;
     String idRegistro;
-//    Button eliminar, actualizar;
+    Button eliminar, actualizar;
 
     //Utilidades
     Utiles utiles;
@@ -61,6 +61,7 @@ public class DetalleActivity extends AppCompatActivity {
         db = new ConsultaDB();
         bundle = getIntent().getExtras();
 
+        //Asignar id de registro traido desde la actividad listar
         idRegistro = bundle.getString("id");
 
         //Inicia lista
@@ -70,12 +71,12 @@ public class DetalleActivity extends AppCompatActivity {
         listViewDetalle = (ListView) findViewById(R.id.itemListDet);
 
         //Inicia Botones
-        final Button eliminar = findViewById(R.id.idbtnEliminar);
-        final Button actualizar = findViewById(R.id.idbtnActualizar);
+        eliminar = findViewById(R.id.idbtnEliminar);
+        actualizar = findViewById(R.id.idbtnActualizar);
 
         //DATOS OBTENIDOS DE LA BD
-        ArrayList<String> res = db.Total(idRegistro);
-        System.out.println("ARRAY POSICION######################################################: "+res.get(0));
+        ArrayList<String> res = db.Total(idRegistro, "detalle");
+        System.out.println("ARRAY POSICION######################################################: " + res.get(0));
         if (res.size() <= 0) {
             utiles.notificar("No hay Registros", mContext);
         } else {
@@ -144,7 +145,7 @@ public class DetalleActivity extends AppCompatActivity {
         alerta.setMessage("¿Desea eliminar el registro?");
         alerta.setIcon(android.R.drawable.ic_dialog_alert);
 
-        alerta.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+        alerta.setPositiveButton("ACEPTAR", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 System.out.println("##################GUARDANDO NUEVO REGISTRO#######################################");
@@ -160,7 +161,7 @@ public class DetalleActivity extends AppCompatActivity {
             }
         });
 
-        alerta.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        alerta.setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
                 dialogInterface.cancel();
@@ -172,31 +173,12 @@ public class DetalleActivity extends AppCompatActivity {
     }
 
     public void actualizar(View view) {
-        AlertDialog.Builder alerta = new AlertDialog.Builder(this);
 
-        alerta.setTitle("ACTUALIZAR REGISTRO");
-        alerta.setMessage("¿Desea actualizar el registro?");
-        alerta.setIcon(android.R.drawable.ic_dialog_alert);
+        System.out.println("##################IENDO A PANTALLA ACTUALIZAR#######################################");
 
-        alerta.setPositiveButton("SI", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                System.out.println("##################IENDO A PANTALLA ACTUALIZAR#######################################");
-
-                Intent intent = new Intent(mContext, ListarActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        alerta.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int which) {
-                dialogInterface.cancel();
-            }
-        });
-
-        //ALERTA
-        alerta.show();
+        Intent intent = new Intent(mContext, ActualizarActivity.class);
+        intent.putExtra("id", idRegistro);
+        startActivity(intent);
+//                finish();
     }
 }
