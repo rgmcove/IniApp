@@ -12,6 +12,7 @@
         android:id="@+id/idtxtTitDetalle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:textColor="@color/colorBlack"
         android:layout_gravity="center_horizontal"
         android:text="@string/titulo_detalle"
@@ -38,24 +39,22 @@
 
         <Button
             android:id="@+id/idbtnActualizar"
-            android:layout_width="match_parent"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/style_boton_ingresar"
             android:onClick="actualizar"
             android:text="Actualizar"
-            android:textColor="@android:color/background_light"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:textSize="18dp"
             android:layout_margin="15dp"
             android:layout_weight="1"/>
 
         <Button
             android:id="@+id/idbtnEliminar"
-            android:layout_width="match_parent"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/style_boton_ingresar"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:onClick="eliminar"
             android:text="Eliminar"
-            android:textColor="@android:color/background_light"
             android:textSize="18dp"
             android:layout_weight="1"
             android:layout_margin="15dp" />

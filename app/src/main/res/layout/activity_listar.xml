@@ -11,6 +11,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:textColor="@color/colorBlack"
         android:layout_gravity="center_horizontal"
         android:text="@string/titulo_listar"
@@ -34,7 +35,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/style_boton_ingresar"
         android:text="Nuevo Registro"
-        android:textColor="@android:color/background_light" />
+        android:textColor="@android:color/background_light"
+        style="@style/Widget.AppCompat.Button.Colored"/>
 </LinearLayout>

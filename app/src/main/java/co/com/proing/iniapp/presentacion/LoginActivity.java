@@ -23,6 +23,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,8 +60,8 @@ public class LoginActivity extends AppCompatActivity {
     Utiles utilidades;
 
     //Declarar Elementos de activity_login
-    EditText txtUsuario;
-    EditText txtContraseña;
+    TextInputEditText txtUsuario;
+    TextInputEditText txtContraseña;
     Button btnIngresar;
 
     //BD
@@ -129,9 +132,11 @@ public class LoginActivity extends AppCompatActivity {
 
             } else{
                 utilidades.notificar("Usuario o Contraseña incorrectos, ingreselos nuevamente", mContext);
+                txtUsuario.setText("");
+                txtContraseña.setText("");
             }
         }
-        db.conectarBD();
+//        db.conectarBD();
     }
 
     private void checkPermissions(){

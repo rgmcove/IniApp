@@ -61,10 +61,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="90dp"
-        android:background="@drawable/style_boton_ingresar"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:text="Actualizar"
         android:onClick="actualizar"
-        android:textColor="@android:color/background_light"
         android:textSize="18dp" />
 
 </LinearLayout>

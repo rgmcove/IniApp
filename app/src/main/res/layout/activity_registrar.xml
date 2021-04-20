@@ -69,8 +69,7 @@
             android:id="@+id/idbtnFecha"
             android:text="Fecha"
             android:textColor="@color/colorWhite"
-            android:background="@color/colorPrimary"
-            />
+            style="@style/Widget.AppCompat.Button.Colored"/>
 
         <EditText
             android:id="@+id/idtxtFecha"
@@ -94,8 +93,7 @@
             android:id="@+id/idbtHora"
             android:text="Hora"
             android:textColor="@color/colorWhite"
-            android:background="@color/colorPrimary"
-            />
+            style="@style/Widget.AppCompat.Button.Colored"/>
 
         <EditText
             android:id="@+id/idtxtHora"
@@ -111,10 +109,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="60dp"
-        android:background="@drawable/style_boton_ingresar"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:text="Registrar"
         android:onClick="registrarNuevo"
-        android:textColor="@android:color/background_light"
         android:textSize="18sp" />
 
 </LinearLayout>
