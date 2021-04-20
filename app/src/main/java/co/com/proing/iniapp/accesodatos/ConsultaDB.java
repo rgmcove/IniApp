@@ -190,7 +190,8 @@ public class ConsultaDB {
                         "x.estado, \n" +
                         "y.rhdocumento||' '||y.rhnombre||' '||y.rhapell1||' '||y.rhapell2\n" +
                         "from ejercicio_android x\n" +
-                        "left join rh_hojadevida y on y.rhdocumento = x.usuario_crea";
+                        "left join rh_hojadevida y on y.rhdocumento = x.usuario_crea\n" +
+                        "order by 1";
 
                 ResultSet resultSet = st.executeQuery(sql);
 

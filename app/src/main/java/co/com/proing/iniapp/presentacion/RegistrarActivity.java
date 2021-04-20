@@ -26,6 +26,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 import java.util.Calendar;
 
 import co.com.proing.iniapp.R;
@@ -35,7 +37,8 @@ import co.com.proing.iniapp.utilidades.Utiles;
 public class RegistrarActivity extends AppCompatActivity implements View.OnClickListener {
 
     //Declarar elementos del activity_registrar
-    EditText descripcion, efecha, ehora;
+    EditText efecha, ehora;
+    TextInputEditText descripcion;
     Spinner comboEstado;
     String usuario;
     Button bfecha, bhora, btnRegistrar;
@@ -57,7 +60,8 @@ public class RegistrarActivity extends AppCompatActivity implements View.OnClick
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setDisplayShowTitleEnabled(false);
+            actionBar.setDisplayShowTitleEnabled(true);
+            actionBar.setTitle("Nuevo Registro");
 //            actionBar.setDisplayShowHomeEnabled(true);
         }
 

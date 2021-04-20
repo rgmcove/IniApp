@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,7 +33,6 @@ public class ListarActivity extends AppCompatActivity {
 
     //Declarar elementos del activity_listar
     Button btnRegistrar;
-    TextView labelTitulo;
     private ListView listViewRegister;
 
     //Utilidades
@@ -43,8 +43,18 @@ public class ListarActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        //Quitar barra de titulo
+//        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_listar);
+
+        //ACTIVAR EL BOTON ATRAS Y QUITAR TITULO
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayShowTitleEnabled(true);
+            actionBar.setTitle("Listado Registros");
+//            actionBar.setDisplayShowHomeEnabled(true);
+        }
 
         mContext = this;
         utilidades = new Utiles();
@@ -52,7 +62,6 @@ public class ListarActivity extends AppCompatActivity {
 
         //Asignar valores a los elementos
         btnRegistrar = findViewById(R.id.btnRegistrar);
-        labelTitulo = findViewById(R.id.textView);
 
         //Inicia lista
         listRegister = new ArrayList<>();

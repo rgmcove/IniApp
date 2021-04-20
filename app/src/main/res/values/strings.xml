@@ -5,4 +5,13 @@
     <string name="titulo_registro">Nuevo Registro</string>
     <string name="titulo_detalle">Detalle</string>
     <string name="titulo_actualizar">Actualizar Registro</string>
+    <string name="btnRegistrar">Nuevo Registro</string>
+    <string name="lblUsuarioLogin">Usuario</string>
+    <string name="txtContraseniaLogin">Contraseña</string>
+    <string name="btn_iniciar_sesion">Iniciar Sesion</string>
+    <string name="ImageLoginDescription">Hola</string>
+    <string name="txtDescripcionActualizar">Descripción</string>
+    <string name="lblEstado">Estado:</string>
+    <string name="btnActualizar">Actualizar</string>
+    <string name="btnEliminar">Eliminar</string>
 </resources>

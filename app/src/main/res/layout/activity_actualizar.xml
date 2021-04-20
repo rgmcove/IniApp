@@ -2,56 +2,43 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="@string/titulo_actualizar"
-        android:textAlignment="center"
-        android:textColor="@color/colorBlack"
-        android:textSize="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="@dimen/margen_izquierda"
-        android:layout_marginRight="@dimen/margen_derecha"
-        />
+        android:layout_marginTop="20dp"
+        android:hint="@string/txtDescripcionActualizar"
+        android:inputType="textPersonName"
+        app:helperText="Actualice la descripción"
+        android:layout_marginStart="@dimen/margen_izquierda"
+        android:layout_marginEnd="@dimen/margen_derecha">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/lblDescripcion"
-        android:layout_marginTop="40dp"
-        android:text="Descripción: "
-        android:textColor="@color/colorBlack"
-        android:layout_marginLeft="@dimen/margen_izquierda"
-        android:layout_marginRight="@dimen/margen_derecha"
-        android:textSize="20dp"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/idtxtDescripcionA"
+            />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/idtxtDescripcionA"
-        android:layout_marginLeft="@dimen/margen_izquierda"
-        android:layout_marginRight="@dimen/margen_derecha"
-        />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/lblEstado"
-        android:text="Estado: "
-        android:textColor="@color/colorBlack"
-        android:layout_marginLeft="@dimen/margen_izquierda"
-        android:layout_marginRight="@dimen/margen_derecha"
+        android:text="@string/lblEstado"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="@dimen/margen_derecha"
         android:layout_marginTop="8dp"
-        android:textSize="20dp"/>
+        android:textSize="20sp"/>
 
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/idSpnEstadoA"
-        android:layout_marginLeft="@dimen/margen_izquierda"
-        android:layout_marginRight="@dimen/margen_derecha"
+        android:layout_marginStart="@dimen/margen_izquierda"
+        android:layout_marginEnd="@dimen/margen_derecha"
         android:layout_marginTop="8dp"
         />
 
@@ -60,10 +47,10 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="60dp"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:text="Actualizar"
+        android:text="@string/btnActualizar"
         android:onClick="actualizar"
-        android:textSize="18dp" />
+        android:textSize="18sp" />
 
 </LinearLayout>

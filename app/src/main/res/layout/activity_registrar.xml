@@ -2,50 +2,38 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:id="@+id/titulo_registrar"
-        android:text="@string/titulo_registro"
-        android:textAlignment="center"
-        android:textColor="@color/colorBlack"
-        android:textSize="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
+        android:hint="Descripcion"
+        android:inputType="textPersonName"
+        app:helperText="Ingrese la descripción"
         android:layout_marginLeft="@dimen/margen_izquierda"
-        android:layout_marginRight="@dimen/margen_derecha"
-        />
+        android:layout_marginRight="@dimen/margen_derecha">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/lblDescripcion"
-        android:layout_marginTop="40dp"
-        android:text="Descripción: "
-        android:textColor="@color/colorBlack"
-        android:layout_marginLeft="@dimen/margen_izquierda"
-        android:layout_marginRight="@dimen/margen_derecha"
-        android:textSize="20dp"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/idtxtDescripcion"
+            />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/idtxtDescripcion"
-        android:layout_marginLeft="@dimen/margen_izquierda"
-        android:layout_marginRight="@dimen/margen_derecha"
-        />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/lblEstado"
-        android:text="Estado: "
-        android:textColor="@color/colorBlack"
-        android:layout_marginLeft="@dimen/margen_izquierda"
+        android:text="Estado:"
+        android:layout_marginLeft="13dp"
         android:layout_marginRight="@dimen/margen_derecha"
         android:layout_marginTop="8dp"
-        android:textSize="20dp"/>
+        android:textSize="20dp">
+
+    </com.google.android.material.textview.MaterialTextView>
 
     <Spinner
         android:layout_width="match_parent"
@@ -75,7 +63,8 @@
             android:id="@+id/idtxtFecha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10" />
+            android:ems="10"
+            android:editable="false"/>
 
     </LinearLayout>
 
@@ -99,7 +88,8 @@
             android:id="@+id/idtxtHora"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10" />
+            android:ems="10"
+            android:editable="false"/>
 
     </LinearLayout>
 

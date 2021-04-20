@@ -8,25 +8,13 @@
     android:orientation="vertical"
     android:weightSum="5">
 
-    <TextView
-        android:id="@+id/idtxtTitDetalle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:textColor="@color/colorBlack"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/titulo_detalle"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        />
-
     <ListView
         android:id="@+id/itemListDet"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margen_izquierda"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/margen_izquierda"
         android:layout_marginTop="15dp"
-        android:layout_marginRight="@dimen/margen_derecha"
+        android:layout_marginEnd="@dimen/margen_derecha"
         android:layout_weight="5"/>
 
     <LinearLayout
@@ -42,9 +30,9 @@
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:onClick="actualizar"
-            android:text="Actualizar"
+            android:text="@string/btnActualizar"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:layout_margin="15dp"
             android:layout_weight="1"/>
 
@@ -54,8 +42,8 @@
             android:layout_height="wrap_content"
             style="@style/Widget.AppCompat.Button.Colored"
             android:onClick="eliminar"
-            android:text="Eliminar"
-            android:textSize="18dp"
+            android:text="@string/btnEliminar"
+            android:textSize="18sp"
             android:layout_weight="1"
             android:layout_margin="15dp" />
 

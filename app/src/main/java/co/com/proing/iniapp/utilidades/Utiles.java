@@ -10,4 +10,8 @@ public class Utiles extends AppCompatActivity {
     public void notificar(String mensaje, Context ct){
         Toast.makeText(ct, mensaje, Toast.LENGTH_LONG).show();
     }
+
+    public void notificarCor(String mensaje, Context ct){
+        Toast.makeText(ct, mensaje, Toast.LENGTH_SHORT).show();
+    }
 }

@@ -7,26 +7,14 @@
     android:orientation="vertical"
     android:layout_weight="7">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:textColor="@color/colorBlack"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/titulo_listar"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        android:layout_weight="2"/>
-
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="15dp"
-        android:layout_marginLeft="@dimen/margen_izquierda"
-        android:layout_marginRight="@dimen/margen_derecha"
+        android:layout_marginStart="@dimen/margen_izquierda"
+        android:layout_marginEnd="@dimen/margen_derecha"
         android:id="@+id/itemListReg"
-        android:layout_weight="5" />
+        android:layout_weight="7" />
 
     <Button
         android:id="@+id/btnRegistrar"
@@ -35,7 +23,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
-        android:text="Nuevo Registro"
+        android:text="@string/btnRegistrar"
         android:textColor="@android:color/background_light"
         style="@style/Widget.AppCompat.Button.Colored"/>
 </LinearLayout>

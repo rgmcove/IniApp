@@ -123,7 +123,7 @@ public class LoginActivity extends AppCompatActivity {
         } else{
 
             if (user.equals(cedula) && pass.equals(clave)){
-                utilidades.notificar("Ingreso correctamente", mContext);
+                utilidades.notificarCor("Ingreso correctamente", mContext);
                 Intent intent = new Intent(this, ListarActivity.class);
                 editor.putString("usuario", cedula);
                 editor.commit();

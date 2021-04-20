@@ -16,7 +16,7 @@
         android:layout_marginTop="50dp"
         android:textAlignment="center"
         android:textColor="@color/colorBlack"
-        android:textSize="25dp"/>
+        android:textSize="25sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,7 +29,8 @@
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/proing" />
+            app:srcCompat="@drawable/proing"
+            android:contentDescription="@string/ImageLoginDescription" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="300dp"
@@ -37,7 +38,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:ems="10"
-            android:hint="Usuario"
+            android:hint="@string/lblUsuarioLogin"
             android:inputType="textPersonName"
             app:helperText="Ingrese su numero de cedula">
 
@@ -55,7 +56,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:ems="10"
-            android:hint="Contraseña"
+            android:hint="@string/txtContraseniaLogin"
             app:helperText="Contraseña de 5 digitos"
             app:endIconMode="password_toggle">
 
@@ -73,7 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:text="Iniciar Sesion"
+            android:text="@string/btn_iniciar_sesion"
             android:textColor="@android:color/background_light"
             android:textSize="18sp"
             style="@style/Widget.AppCompat.Button.Colored"
