@@ -86,6 +86,9 @@ public class LoginActivity extends AppCompatActivity {
         txtUsuario = findViewById(R.id.txtUsuario);
         txtContraseña = findViewById(R.id.txtPassword);
 
+        txtUsuario.setText("1113654597");
+        txtContraseña.setText("14789");
+
         //PREFERENCES Y EDITOR
         global = getSharedPreferences("rag", MODE_PRIVATE);
         editor = global.edit();
