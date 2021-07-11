@@ -17,8 +17,7 @@ public class ConexionDB {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
             Class.forName("org.postgresql.Driver");
-            conexion = DriverManager.getConnection("jdbc:postgresql://172.16.0.21:5432/sisproing", "sisproing", "ProingSA2018");
-//            conexion = DriverManager.getConnection("jdbc:postgresql://192.168.0.26:5432/sisproing", "postgres", "tarah723");
+            conexion = DriverManager.getConnection("jdbc:postgresql://192.168.0.26:5432/******", "******", "******");
             System.out.println("#############resultado!!!: " + conexion);
         }catch (Exception er){
             System.err.println("################## Error Conexion: "+ er.toString());
